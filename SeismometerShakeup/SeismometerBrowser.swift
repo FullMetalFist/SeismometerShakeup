@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct SeismometerBrowser: View {
-    @StateObject private var detector = MotionDetector(updateInterval: 0.01)
+    @State private var detector = MotionDetector(updateInterval: 0.01)
     
     var body: some View {
         NavigationSplitView {
@@ -46,7 +46,7 @@ struct SeismometerBrowser: View {
             Text("Select a Seismometer Example")
                 .foregroundColor(.secondary)
         }
-        .environmentObject(detector)
+        .environment(detector)
         .onAppear() {
             detector.start()
         }
