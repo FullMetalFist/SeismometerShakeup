@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct GraphSeismometer: View {
-    @EnvironmentObject private var detector: MotionDetector
+    @Environment(MotionDetector.self) private var detector: MotionDetector
     @State private var data = [Double]()
     let maxData = 1000
     
@@ -58,10 +58,10 @@ struct GraphSeismometer: View {
 }
 
 struct GraphSeismometer_Previews: PreviewProvider {
-    @StateObject static private var detector = MotionDetector(updateInterval: 0.01).started()
+    @State static private var detector = MotionDetector(updateInterval: 0.01).started()
     
     static var previews: some View {
         GraphSeismometer()
-            .environmentObject(detector)
+            .environment(detector)
     }
 }

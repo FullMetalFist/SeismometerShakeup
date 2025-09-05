@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-extension Angle: Identifiable {
+extension Angle: @retroactive Identifiable {
     public var id: Double {
         radians
     }

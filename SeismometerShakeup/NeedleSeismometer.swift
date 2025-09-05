@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct NeedleSeismometer: View {
-    @EnvironmentObject var motionDetector: MotionDetector
+    @Environment(MotionDetector.self) var motionDetector: MotionDetector
     
     let needleAnchor = UnitPoint(x: 0.5, y: 1)
     let amplification = 2.0
@@ -52,10 +52,10 @@ struct NeedleSeismometer: View {
 
 
 struct NeedleSeisometer_Previews: PreviewProvider {
-    @StateObject static private var detector = MotionDetector(updateInterval: 0.01).started()
+    @State static private var detector = MotionDetector(updateInterval: 0.01).started()
     
     static var previews: some View {
         NeedleSeismometer()
-            .environmentObject(detector)
+            .environment(detector)
     }
 }
